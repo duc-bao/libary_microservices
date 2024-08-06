@@ -1,0 +1,13 @@
+server:
+  port: 8888
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: identity_service
+          uri: http://localhost:8761
+          predicates:
+            - Path=/**
+#          FILTER S? B? QUA PREFIX VÍ D?: /API/EXAMPLE THÌ S? B? QUA /API
+          filters:
+            - StripPrefix=1
