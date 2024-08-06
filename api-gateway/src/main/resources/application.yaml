@@ -1,5 +1,8 @@
 server:
   port: 8888
+app:
+  api:
+    prefix: /api/v1
 spring:
   cloud:
     gateway:
@@ -7,7 +10,7 @@ spring:
         - id: identity_service
           uri: http://localhost:8761
           predicates:
-            - Path=/**
+            - Path=${app.api.prefix}/**
 #          FILTER S? B? QUA PREFIX VÍ D?: /API/EXAMPLE THÌ S? B? QUA /API
           filters:
-            - StripPrefix=1
+            - StripPrefix=2
