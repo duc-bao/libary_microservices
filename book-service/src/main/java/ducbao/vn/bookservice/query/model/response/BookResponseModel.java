@@ -1,15 +1,14 @@
-package ducbao.vn.bookservice.command.model;
+package ducbao.vn.bookservice.query.model.response;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-@Setter
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class BookRequestModel {
-    String id;
+public class BookResponseModel {
     String name;
     String author;
     boolean isReady;

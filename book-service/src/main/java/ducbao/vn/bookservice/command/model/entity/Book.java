@@ -1,4 +1,4 @@
-package ducbao.vn.bookservice.command.data;
+package ducbao.vn.bookservice.command.model.entity;
 
 import jakarta.persistence.*;
 
@@ -9,7 +9,6 @@ import lombok.Data;
 @Data
 public class Book {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     private String name;
