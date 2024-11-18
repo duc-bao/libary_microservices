@@ -5,6 +5,8 @@ import ducbao.vn.bookservice.command.repository.BookRepository;
 import ducbao.vn.bookservice.query.model.response.BookResponseModel;
 import ducbao.vn.bookservice.query.query.GetAllBookQuery;
 import ducbao.vn.bookservice.query.query.GetBookByIdQuery;
+import ducbao.vn.commonservice.model.AppException;
+import ducbao.vn.commonservice.model.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.beans.BeanUtils;
@@ -32,13 +34,10 @@ public class BookProjection {
         return  bookResponseModels;
     }
     @QueryHandler
-    public BookResponseModel findById(GetBookByIdQuery query) {
-        Optional<Book> book = bookRepository.findById(query.getId());
-        if (book.isPresent()) {
-            BookResponseModel bookResponseModel = new BookResponseModel();
-            BeanUtils.copyProperties(book.get(), bookResponseModel);
-            return bookResponseModel;
-        }
-        return null;
+    public BookResponseModel findById(GetBookByIdQuery query)  {
+        BookResponseModel bookResponseModel = new BookResponseModel();
+        Book book = bookRepository.findById(query.getId()).orElseThrow(() -> new AppException(ErrorCode.ID_NOT_FOUND));
+        BeanUtils.copyProperties(book, bookResponseModel);
+        return bookResponseModel;
     }
 }

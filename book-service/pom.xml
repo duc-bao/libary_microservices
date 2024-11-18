@@ -67,6 +67,11 @@
             <version>33.2.1-jre</version>
         </dependency>
         <dependency>
+            <groupId>ducbao.vn</groupId>
+            <artifactId>common-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
@@ -76,6 +81,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
     <dependencyManagement>
         <dependencies>
